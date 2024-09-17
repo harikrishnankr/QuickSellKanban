@@ -1,0 +1,24 @@
+.kanban-header {
+  height: 3rem;
+  padding: 5px 25px;
+  background-color: #fff;
+  box-shadow: 0 13px 21px -9px rgba(0, 0, 0, .2);
+  display: flex;
+  align-items: center;
+}
+
+.filter-row {
+  width: 250px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.filter-row:last-child {
+  margin-bottom: 0;
+}
+
+.filter-row label {
+  color: #797979;
+}
