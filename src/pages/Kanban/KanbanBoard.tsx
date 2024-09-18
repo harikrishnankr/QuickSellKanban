@@ -96,7 +96,7 @@ export function KanbanBoard() {
       } else if (groupingAttribute === "userId") {
         taskStack = Object.keys(users)
           .map((userKey) => users[userKey])
-          .sort((a, b) => a.name - b.name)
+          .sort((a, b) =>  a.name.toLowerCase().localeCompare(b.name.toLowerCase()))
           .map((user) => ({
             ...groupedData[user.id],
             userAvailable: user.available,
@@ -114,6 +114,18 @@ export function KanbanBoard() {
           };
         });
       }
+      taskStack = taskStack.map(stack => {
+        return {
+          ...stack,
+          tasks: stack.tasks.sort((t1: Ticket, t2: Ticket) => {
+            if (displayData.sorting === "priority") {
+              return t2.priority - t1.priority
+            } else if (displayData.sorting === "title") {
+              return t1.title.toLowerCase().localeCompare(t2.title.toLowerCase());
+            }
+          })
+        }
+      })
       console.log(taskStack);
       setTaskStack(taskStack);
     }
