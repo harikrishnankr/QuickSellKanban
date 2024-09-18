@@ -3,10 +3,13 @@
   "version": "1.0.0",
   "description": "Kanban Board - Task Assessment for QuickSell",
   "main": "index.js",
+  "homepage": "https://harikrishnankr.github.io/QuickSellKanban",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npx webpack serve --mode development",
-    "build": "npx webpack --mode production"
+    "build": "npx webpack --mode production",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "author": "harisemail94@gmail.com",
   "license": "ISC",
@@ -21,6 +24,7 @@
     "clean-webpack-plugin": "^4.0.0",
     "css-loader": "^7.1.2",
     "file-loader": "^6.2.0",
+    "gh-pages": "^6.1.1",
     "html-webpack-plugin": "^5.6.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

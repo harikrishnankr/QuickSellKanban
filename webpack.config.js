@@ -2,25 +2,27 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
+const isProduction = process.env.NODE_ENV === 'production';
+
 module.exports = {
-  entry: './src/index.tsx', // Entry point of your application
+  entry: './src/index.tsx',
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
-    publicPath: '/',
+    publicPath: isProduction ? '/QuickSellKanban/' : '/',
   },
   resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'], // Resolve file extensions
+    extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
   },
   module: {
     rules: [
       {
-        test: /\.(ts|tsx)$/, // Handle TypeScript files
+        test: /\.(ts|tsx)$/,
         exclude: /node_modules/,
         use: 'ts-loader',
       },
       {
-        test: /\.(js|jsx)$/, // Handle JavaScript files
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: 'babel-loader',
       },
@@ -29,28 +31,28 @@ module.exports = {
         use: ['style-loader', 'css-loader'],
       },
       {
-        test: /\.(png|jpg|jpeg|gif|svg)$/, // Handle image files
+        test: /\.(png|jpg|jpeg|gif|svg)$/,
         type: 'asset/resource',
       },
       {
-        test: /\.(woff(2)?|eot|ttf|otf)$/, // Handle font files
+        test: /\.(woff(2)?|eot|ttf|otf)$/,
         type: 'asset/resource',
       },
     ],
   },
   plugins: [
-    new CleanWebpackPlugin(), // Clean output directory before each build
+    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      template: './public/index.html', // Template HTML file
+      template: './public/index.html',
       filename: 'index.html',
-      favicon: './public/favicon.ico', // Optional: Favicon
+      favicon: './public/favicon.ico',
     }),
   ],
   devServer: {
     static: path.join(__dirname, 'dist'),
-    port: 3000, // You can change the dev server port if needed
-    hot: true, // Enable hot module replacement
-    historyApiFallback: true, // For React Router
+    port: 3000,
+    hot: true,
+    historyApiFallback: true,
   },
-  mode: 'development', // Set to 'production' for production builds
+  mode: 'development',
 };

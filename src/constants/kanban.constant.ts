@@ -73,3 +73,5 @@ export const SortingList = [
     label: "Title",
   },
 ];
+
+export const KanbanFilterState = "KanbanFilterState";
