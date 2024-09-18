@@ -8,7 +8,7 @@ import {
 } from "../../constants/kanban.constant";
 import "./kanban-board.css";
 import { Stack } from "./Stack/Stack";
-import { useKanbanStack } from "../../hooks/useKanbanStack";
+import { useKanbanStack } from "../../hooks";
 
 export interface Ticket {
   id: string;
